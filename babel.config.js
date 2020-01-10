@@ -7,6 +7,13 @@ module.exports = {
         libraryName: "view-design",
         libraryDirectory: "src/components"
       }
+    ],
+    [
+      "import",
+      {
+        libraryName: "view-design",
+        libraryDirectory: "src/components"
+      }
     ]
   ]
 };

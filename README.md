@@ -52,3 +52,7 @@ git log > 文件名 // 查看相关文件的日志
 ```
 conventional-changelog -p -i CHANGELOG.md -s
 ```
+### iview 按需引用
+因为项目所需组件有限，所以针对view-design组件库做了按需引入
+添加步骤：
+* 在plugins/iview.js中引入需要的组件

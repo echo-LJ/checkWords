@@ -120,7 +120,6 @@ export default {
     margin-bottom: 5%;
     box-shadow: 0px 0px 5px 2px rgba($black, 0.1);
   }
-  
   .l-speechcraft {
     font-size: 30px;
     text-align: left;

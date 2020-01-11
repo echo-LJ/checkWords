@@ -3,8 +3,7 @@
     <router-view v-if="false"></router-view>
     <div class="c-container c-cover-box c-flex-between">
       <Aside></Aside>
-      
-      <div class="c-footer"></div>
+      <router-view></router-view>
     </div>
   </div>
 </template>

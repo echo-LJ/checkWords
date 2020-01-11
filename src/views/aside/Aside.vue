@@ -1,14 +1,22 @@
 <template>
-  <div class="aside-container c-flex-row">
+  <div class="aside-container c-flex-column">
     <div class="a-photo-box c-flex-center">
       <img src="./../../assets/img/honeGirl.jpg" />
+    </div>
+    <div class="a-menu-box">
+      <book-menu></book-menu>
     </div>
   </div>
 </template>
 
 <script>
+import BookMenu from "./../bookMenu/BookMenu.vue";
+
 export default {
   name: "Aside",
+  components: {
+    BookMenu
+  },
   data() {
     return {};
   },
@@ -29,6 +37,11 @@ export default {
     width: 220px;
     height: 220px;
     overflow: hidden;
+  }
+  .a-menu-box {
+    flex: 1;
+    padding: 0 2 * $spacing;
+    margin-top: 4 * $spacing;
   }
 }
 </style>

@@ -19,3 +19,10 @@
   display: flex;
   flex-direction: row;
 }
+.c-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.c-flex-item{
+  flex:1;
+}

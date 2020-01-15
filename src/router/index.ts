@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 // import Home from "../views/Home.vue";
 import * as routerNames from "./routerNames";
 import Aside from "../views/aside/Aside.vue";
+import BookList from "../views/bookList/BookList.vue";
 
 Vue.use(VueRouter);
 
@@ -49,11 +50,35 @@ export const routes = [
     path: "/home",
     name: routerNames.HELLO,
     components: {
-      aside: Aside
+      aside: Aside,
+      body: BookList
     },
     meta: {
       pageTitle: `router.${routerNames.HELLO}`
     }
+  },
+  {
+    path: "/booklist",
+    name: routerNames.BOOKLIST,
+    components: {
+      aside: Aside,
+      body: BookList
+    },
+    meta: {
+      pageTitle: `router.${routerNames.BOOKLIST}`
+    }
+    // children: [
+    //   {
+    //     path: ':subName',
+    //     name: routerNames.COMPONENTDETAIL,
+    //     component: Post,
+    //     meta: {
+    //       detail: routerNames.COMPONENTDETAIL,
+    //       pageTitle: `router.${routerNames.COMPONENTDETAIL}`,
+    //       contentData: componentList
+    //     }
+    //   }
+    // ]
   },
   {
     path: "/about",

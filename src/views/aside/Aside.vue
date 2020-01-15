@@ -1,5 +1,4 @@
 <template>
-
   <div class="aside-container c-flex-cloumn">
     <div class="a-photo-box c-flex-center">
       <img src="./../../assets/img/honeGirl.jpg" />
@@ -11,11 +10,10 @@
 <script>
 import navList from "../../components/navList/NavList";
 
-
 export default {
   name: "Aside",
   components: {
-navList
+    navList
   },
   data() {
     return {};

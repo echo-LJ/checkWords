@@ -1,21 +1,21 @@
 <template>
-  <div class="aside-container c-flex-column">
+
+  <div class="aside-container c-flex-cloumn">
     <div class="a-photo-box c-flex-center">
       <img src="./../../assets/img/honeGirl.jpg" />
     </div>
-    <div class="a-menu-box">
-      <book-menu></book-menu>
-    </div>
+    <nav-list></nav-list>
   </div>
 </template>
 
 <script>
-import BookMenu from "./../bookMenu/BookMenu.vue";
+import navList from "../../components/navList/NavList";
+
 
 export default {
   name: "Aside",
   components: {
-    BookMenu
+navList
   },
   data() {
     return {};

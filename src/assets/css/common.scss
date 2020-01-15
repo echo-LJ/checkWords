@@ -15,7 +15,11 @@
   display: flex;
   justify-content: space-between;
 }
-.c-flex-row{
+.c-flex-cloumn{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+.c-flex-item{
+  flex-grow: 1;
+  flex: 1;
 }

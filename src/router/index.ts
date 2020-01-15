@@ -1,18 +1,32 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+
+// import Home from "../views/Home.vue";
+import * as routerNames from "./routerNames";
+import Aside from "../views/aside/Aside.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: Home
+    redirect: {
+      name: routerNames.HELLO
+    }
+  },
+  {
+    path: "/home",
+    name: routerNames.HELLO,
+    components: {
+      aside: Aside
+    },
+    meta: {
+      pageTitle: `router.${routerNames.HELLO}`
+    }
   },
   {
     path: "/about",
-    name: "about",
+    name: routerNames.HELLO,
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

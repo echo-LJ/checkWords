@@ -7,7 +7,38 @@ import Aside from "../views/aside/Aside.vue";
 
 Vue.use(VueRouter);
 
-const routes = [
+Vue.use(VueRouter);
+// const MenuData = [
+//   {
+//     icon: "ios-add",
+//     label: "",
+//     value: "add",
+//     routeName: "addWord",
+//     route: "word/add"
+//   },
+//   {
+//     icon: "ios-book-outline",
+//     label: "单词书籍",
+//     value: "book",
+//     routeName: "addWord",
+//     routerName: ''
+//   },
+//   {
+//     icon: "ios-bonfire-outline",
+//     label: "单词测试",
+//     value: "test",
+//     routeName: "addWord",
+//     routerName: ''
+//   },
+//   {
+//     icon: "ios-basket-outline",
+//     label: "单词汇总",
+//     value: "all",
+//     routeName: "addWord",
+//     routerName: ''
+//   }
+// ];
+export const routes = [
   {
     path: "/",
     redirect: {
@@ -41,6 +72,17 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/login/Login.vue")
+  },
+  {
+    path: "/word/add",
+    name: "addWord",
+    meta: {
+      icon: "ios-add",
+      title: "录入单词"
+    },
+    isMenu: true,
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/addWord/AddWord.vue")
   }
 ];
 

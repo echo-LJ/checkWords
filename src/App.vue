@@ -2,7 +2,7 @@
   <div id="app" class="c-cover-box">
     <router-view v-if="false"></router-view>
     <div class="c-container c-cover-box c-flex-between">
-      <router-view name="aside"></router-view>
+<router-view name="aside"></router-view>
       <div class="c-footer"></div>
     </div>
   </div>

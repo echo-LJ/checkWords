@@ -23,3 +23,10 @@
   flex-grow: 1;
   flex: 1;
 }
+.c-flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.c-flex-item{
+  flex:1;
+}

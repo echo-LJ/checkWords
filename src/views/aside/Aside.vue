@@ -4,18 +4,18 @@
       <img src="./../../assets/img/honeGirl.jpg" />
     </div>
     <div class="a-menu-box">
-      <book-menu></book-menu>
+      <NavList></NavList>
     </div>
   </div>
 </template>
 
 <script>
-import BookMenu from "./../bookMenu/BookMenu.vue";
+import NavList from "../../components/navList/NavList.vue"
 
 export default {
   name: "Aside",
   components: {
-    BookMenu
+    NavList
   },
   data() {
     return {};

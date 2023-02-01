@@ -1,16 +1,19 @@
 <template>
-  <div id="app" class="c-cover-box">
-    <router-view v-if="false"></router-view>
-    <div class="c-container c-cover-box c-flex-between">
-<router-view name="aside"></router-view>
-      <div class="c-footer"></div>
+  <div id="app" class=" c-container c-cover-box c-flex-between">
+    <Aside v-if="false"></Aside>
+    <div class="c-flex-item">
+        <router-view></router-view>
     </div>
   </div>
 </template>
 
 <script>
+import Aside from "./views/aside/Aside.vue";
 export default {
-  name: "app"
+  name: "app",
+  components: {
+    Aside
+  }
 };
 </script>
 

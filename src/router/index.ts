@@ -3,9 +3,10 @@ import VueRouter from "vue-router";
 
 // import Home from "../views/Home.vue";
 import * as routerNames from "./routerNames";
-import Aside from "../views/aside/Aside.vue";
+// import AddWord from "../views/addWord/AddWord.vue";
+import WordEbbinghaus from "../views/wordEbbinghaus/WordEbbinghaus.vue";
 
-Vue.use(VueRouter);
+
 
 Vue.use(VueRouter);
 // const MenuData = [
@@ -48,9 +49,7 @@ export const routes = [
   {
     path: "/home",
     name: routerNames.HELLO,
-    components: {
-      aside: Aside
-    },
+    component: WordEbbinghaus,
     meta: {
       pageTitle: `router.${routerNames.HELLO}`
     }

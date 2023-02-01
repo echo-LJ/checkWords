@@ -2,7 +2,7 @@
 
   <div class="aside-container c-flex-cloumn">
     <div class="a-photo-box c-flex-center">
-      <img src="./../../assets/img/honeGirl.jpg" />
+      <!-- <img src="./../../assets/img/honeGirl.jpg" /> -->
     </div>
     <nav-list></nav-list>
   </div>
@@ -15,7 +15,7 @@ import navList from "../../components/navList/NavList";
 export default {
   name: "Aside",
   components: {
-navList
+    navList
   },
   data() {
     return {};
@@ -32,8 +32,10 @@ navList
   background: $white;
   box-shadow: 2px 0 3px -1px rgba($black, 0.3);
   padding: 4 * $spacing;
+  border-bottom: 1px solid #ccc;
   .a-photo-box {
-    border-radius: 100%;
+    // border-radius: 100%;
+    border: 1px solid #ccc;
     width: 220px;
     height: 220px;
     overflow: hidden;

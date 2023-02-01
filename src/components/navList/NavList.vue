@@ -1,7 +1,7 @@
 <template>
   <div class="nav-list-container c-flex-item c-flex-center">
     <router-link class="n-link" v-for="(item, index) in routerNames" :key="index" :to="{ name: item.name, params: item.params }">
-      {{ item.name }}
+      <!-- {{ item.name }} -->
     </router-link>
   </div>
 </template>
@@ -29,4 +29,5 @@ export default {
 .nav-list-container{
   padding: $spacing * 6 0 $spacing * 4 0;
 }
+
 </style>

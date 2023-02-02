@@ -28,7 +28,7 @@ export default {
 @import "./../../assets/css/commonVar.scss";
 .aside-container {
   height: 100%;
-  width: 300px;
+  width: $aside-width;
   background: $white;
   box-shadow: 2px 0 3px -1px rgba($black, 0.3);
   padding: 4 * $spacing;

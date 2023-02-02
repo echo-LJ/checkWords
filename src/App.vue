@@ -1,7 +1,7 @@
 <template>
   <div id="app" class=" c-container c-cover-box c-flex-between">
-    <Aside v-if="false"></Aside>
-    <div class="c-flex-item">
+    <Aside></Aside>
+    <div class="c-flex-item c-flow-auto">
         <router-view></router-view>
     </div>
   </div>

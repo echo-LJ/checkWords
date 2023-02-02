@@ -16,10 +16,19 @@
         <el-popover trigger="hover" placement="top">
           <p>
             <span class="c-font-500">{{ scope.row.word }}</span> 
-            : {{ scope.row.phonogram }}: {{ scope.row.translate }}
+            : {{ scope.row.phonogram }}
           </p>
+          <p> {{ scope.row.translate }}</p>
           <p v-if="scope.row.exp1.length">例句: {{ scope.row.exp1 }}</p>
           <p  v-if="scope.row.expTrans1.length">翻译: {{ scope.row.expTrans1 }}</p>
+          <p v-if="scope.row.exp2.length">例句: {{ scope.row.exp2 }}</p>
+          <p  v-if="scope.row.expTrans2.length">翻译: {{ scope.row.expTrans2 }}</p>
+          <p v-if="scope.row.exp3.length">例句: {{ scope.row.exp3 }}</p>
+          <p  v-if="scope.row.expTrans3.length">翻译: {{ scope.row.expTrans3 }}</p>
+          <p v-if="scope.row.phr1.length">词组: {{ scope.row.phr1 }}</p>
+          <p  v-if="scope.row.phrTrans1.length">翻译: {{ scope.row.phrTrans1 }}</p>
+          <p v-if="scope.row.phr2.length">例句: {{ scope.row.phr2 }}</p>
+          <p  v-if="scope.row.phrTrans2.length">翻译: {{ scope.row.phrTrans2 }}</p>
           <div slot="reference" class="name-wrapper">
             <el-tag size="medium">{{ scope.row.word }}</el-tag>
           </div>
@@ -41,7 +50,13 @@
         prop="one"
         label="1天"
         width="120">
+         <template slot-scope="scope">
+          <p class="c-font-center">{{ scope.row.shortMemory.includes('one')?  '✔️': '⭕️' }}</p>
+        </template>
       </el-table-column>
+      <!-- const faceJson = { '[/wx]': 'face_wx', '[/han]': 'face_han', '[/am]': 'face_am', '[/by]': 'face_by', '[/bs]': 'face_bs', '[/bz]': 'face_bz', '[/bx]': 'face_bx', '[/dk]': 'face_dk', '[/dx]': 'face_dx', '[/tx]': 'face_tx', '[/baib]': 'face_baib', '[/gz2]': 'face_gz2', '[/heng]': 'face_heng', '[/yhh]': 'face_yhh', '[/hxiao]': 'face_hxiao', '[/hy]': 'face_hy', '[/je]': 'face_je', '[/jy]': 'face_jy', '[/jl]': 'face_jl', '[/ku]': 'face_ku', '[/lhan]': 'face_lhan', '[/llei]': 'face_llei', '[/shh]': 'face_shh', '[/tc]': 'face_tc', '[/xia]': 'face_xia', '[/xu]': 'face_xu', '[/yx]': 'face_yx', '[/zhk]': 'face_zhk', '[/tu]': 'face_tu', '[/tp]': 'face_tp', '[/ex]': 'face_ex', '[/nu]': 'face_nu', '[/gg]': 'face_gg', '[/hxiu]': 'face_hxiu', '[/hx]': 'face_hx', '[/jk]': 'face_jk', '[/ka]': 'face_ka', '[/kl]': 'face_kl', '[/kun]': 'face_kun', '[/lh]': 'face_lh', '[/ng]': 'face_ng', '[/girl]': 'face_girl', '[/wq]': 'face_wq', '[/qq]': 'face_qq', '[/se]': 'face_se', '[/shuai]': 'face_shuai', '[/yun]': 'face_yun', '[/zhu]': 'face_zhu', '[/yw]': 'face_yw', '[/fd]': 'face_fd', '[/fdou]': 'face_fdou', '[/qd]': 'face_qd', '[/money]': 'face_money', '[/huiy]': 'face_huiy', '[/ws]': 'face_ws', '[/gz1]': 'face_gz1', '[/ok]': 'face_ok', '[/bq]': 'face_bq', '[/cj]': 'face_cj', '[/lh2]': 'face_lh2', '[/sl]': 'face_sl', '[/yb]': 'face_yb', '[/coffee]': 'face_coffee', '[/xh]': 'face_xh', '[/xs]': 'face_xs', '[/ax]': 'face_ax', '[/ppq]': 'face_ppq', '[/dao]': 'face_dao', '[/zq]': 'face_zq', '[/dh]': 'face_dh', '[/dsj]': 'face_dsj', '[/email]': 'face_email', '[/jiub]': 'face_jiub', '[/lw]': 'face_lw', '[/music]': 'face_music', '[/pj]': 'face_pj', '[/sj]': 'face_sj', '[/xg]': 'face_xg', '[/yaow]': 'face_yaow' }
+       -->
+     
       <el-table-column
         prop="two"
         label="2天"
@@ -69,13 +84,14 @@
         label="12天"
         width="120">
       </el-table-column>
-    </el-table-column>
-     <el-table-column label="长期记忆复习周期">
       <el-table-column
         prop="twenty"
         label="20天"
         width="120">
       </el-table-column>
+    </el-table-column>
+     <el-table-column label="长期记忆复习周期">
+      
       <el-table-column
         prop="oneM"
         label="1个月"
@@ -94,11 +110,11 @@
     </el-table-column>
     <el-table-column
       label="操作"
-      width="100">
+      width="200">
       <template slot-scope="scope">
         <el-button
           size="mini"
-          @click="showDetail(scope.$index, scope.row)">编辑</el-button>
+          @click="editWord(scope.row)">编辑</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -110,45 +126,12 @@
 </template>
 
 <script>
+import * as routerNames from "../../router/routerNames.ts";
 export default {
   name: "WordEbbinghaus",
   data() {
       return {
-        tableData: [],
-        form: {
-          day: '',
-          word: '',
-          translate: '',
-          phonogram: '',
-          exp1:'',
-          expTrans1: '',
-          date: '',
-          memory: false
-        },
-        wordList: [], //单词汇总
-        rules: {
-          day: [
-            { required: true, message: '请填写天数', trigger: 'blur' }
-          ],
-          date: [
-            { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
-          ],
-          word: [
-            { required: true, message: '请填写单词', trigger: 'blur' }
-          ],
-          translate: [
-            { required: true, message: '请填写翻译', trigger: 'blur' }
-          ],
-        },
-        addWordForm: [
-            { label: 'Day', value: 'day', class: 'c-input-300', type: 'inputerNumber'},
-            { label: '日期', value: 'date', class: 'c-input-300', type: 'date' },
-            { label: '单词', value: 'word', class: 'c-input-300', type: 'input', inputType: 'text' },
-            { label: '翻译', value: 'translate', class: 'c-input-300', type: 'input', inputType: 'textarea' },
-            { label: '音标', value: 'phonogram', class: 'c-input-300', type: 'input', inputType: 'text' },
-            { label: '例句', value: 'exp1', class: 'c-input-300', type: 'input', inputType: 'text' },
-            { label: '例句翻译', value: 'expTrans1', class: 'c-input-300', type: 'input', inputType: 'text' },
-        ]
+        tableData: []
       };
     },
     created(){
@@ -158,13 +141,9 @@ export default {
       showRemark(index, row){
         row.show = true;
       },
-      onSubmit(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.wordList.push(this.form);
-            console.log(66,window.wordAllObj);   
-          }
-        });
+      editWord(row) {
+        console.log(row);
+        this.$router.push({ name: routerNames.ADDWORD, params: row, query:{isEdit:true}});
       },
       copyWord(){
         this.$copyText(JSON.stringify(this.wordList));

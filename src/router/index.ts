@@ -3,8 +3,9 @@ import VueRouter from "vue-router";
 
 // import Home from "../views/Home.vue";
 import * as routerNames from "./routerNames";
-// import AddWord from "../views/addWord/AddWord.vue";
+import AddWord from "../views/addWord/AddWord.vue";
 import WordEbbinghaus from "../views/wordEbbinghaus/WordEbbinghaus.vue";
+// import WordEbbinghaus from "../views/wordEbbinghaus/WordEbbinghaus.vue";
 
 
 
@@ -43,25 +44,24 @@ export const routes = [
   {
     path: "/",
     redirect: {
-      name: routerNames.HELLO
+      name: routerNames.ADDWORD
     }
   },
   {
-    path: "/home",
-    name: routerNames.HELLO,
+    path: "/addWord",
+    name: routerNames.ADDWORD,
+    component: AddWord,
+    meta: {
+      pageTitle: `router.${routerNames.ADDWORD}`
+    }
+  },
+  {
+    path: "/WordEbbinghaus",
+    name: routerNames.WORDEBBINGHAUS,
     component: WordEbbinghaus,
     meta: {
-      pageTitle: `router.${routerNames.HELLO}`
+      pageTitle: `router.${routerNames.WORDEBBINGHAUS}`
     }
-  },
-  {
-    path: "/about",
-    name: routerNames.HELLO,
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   {
     path: "/login",

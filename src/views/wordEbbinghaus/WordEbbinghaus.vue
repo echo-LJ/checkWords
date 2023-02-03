@@ -45,6 +45,14 @@
       prop="date"
       width="100">
     </el-table-column>
+     <el-table-column
+      label="备注"
+      prop="remark"
+      width="100">
+      <template slot-scope="scope">
+          <p class="c-font-center">{{ scope.row.remark|| '--' }}</p>
+        </template>
+    </el-table-column>
     <el-table-column label="短期记忆复习周期">
       <el-table-column
         prop="one"

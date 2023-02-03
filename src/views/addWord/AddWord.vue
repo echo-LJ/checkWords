@@ -142,9 +142,10 @@ export default {
           phrTrans2: '',
           phr2: '',
           shortMemory: [],
-           mediumMemory: [],
-           longMemory:[],
-           relation: '',
+            mediumMemory: [],
+            longMemory:[],
+            relation: '',
+            remark: ''
         },
         repeatDialogVisible: false,
         repeatWord: null,
@@ -183,6 +184,7 @@ export default {
             { label: '词组', value: 'phr2', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '词组翻译', value: 'phrTrans2', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '关联', value: 'relation', class: 'c-input-300', type: 'input', inputType: 'textarea' },
+            { label: '备注', value: 'remark', class: 'c-input-300', type: 'input', inputType: 'textarea' },
         ],
         shortMemoryList: [
             {label: '1天', value: 'one'},

@@ -61,6 +61,9 @@
         prop="two"
         label="2天"
         width="120">
+        <template slot-scope="scope">
+           <p class="c-font-center">{{ scope.row.shortMemory.includes('two')?  '✔️': '⭕️' }}</p>
+        </template>
       </el-table-column>
       <el-table-column
         prop="three"
@@ -136,20 +139,28 @@ export default {
     },
     created(){
         this.tableData = window.wordAllArray;
+        // console.log(this.getDate(2),new Date());
     },
     methods: {
       showRemark(index, row){
         row.show = true;
       },
       editWord(row) {
-        console.log(row);
         this.$router.push({ name: routerNames.ADDWORD, params: row, query:{isEdit:true}});
       },
-      copyWord(){
-        this.$copyText(JSON.stringify(this.wordList));
-      },
-      resetForm(formName) {
-        this.$refs[formName].resetFields();
+      getDate(num){
+        let date = new Date();
+        date.setDate(date.getDate() + num);
+        let year = date.getFullYear();
+        let month = date.getMonth()+1;
+        let day = date.getDate();
+        if(month >=1 && month <=9){
+            month = `0${month}`;
+        }
+        if(day >=1 && day <=9){
+            day = `0${day}`;
+        }
+        return  `${year}-${month}-${day}`;
       }
     }
 };

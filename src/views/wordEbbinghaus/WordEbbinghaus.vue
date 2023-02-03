@@ -159,5 +159,6 @@ export default {
 @import "./../../assets/css/commonVar.scss";
 .word-ebbinghaus-container {
   padding: $container-spacing;
+  overflow: auto;
 }
 </style>

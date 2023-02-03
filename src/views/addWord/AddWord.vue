@@ -143,7 +143,8 @@ export default {
           phr2: '',
           shortMemory: [],
            mediumMemory: [],
-           longMemory:[]
+           longMemory:[],
+           relation: '',
         },
         repeatDialogVisible: false,
         repeatWord: null,
@@ -169,8 +170,8 @@ export default {
             { label: 'Day', value: 'day', class: 'c-input-300', type: 'inputerNumber'},
             { label: '日期', value: 'date', class: 'c-input-300', type: 'date' },
             { label: '单词', value: 'word', class: 'c-input-300', type: 'input', inputType: 'text' },
-            { label: '翻译', value: 'translate', class: 'c-input-300', type: 'input', inputType: 'textarea' },
             { label: '音标', value: 'phonogram', class: 'c-input-300', type: 'input', inputType: 'text' },
+            { label: '翻译', value: 'translate', class: 'c-input-300', type: 'input', inputType: 'textarea' },
             { label: '例句', value: 'exp1', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '例句翻译', value: 'expTrans1', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '例句', value: 'exp2', class: 'c-input-300', type: 'input', inputType: 'text' },
@@ -181,6 +182,7 @@ export default {
             { label: '词组翻译', value: 'phrTrans1', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '词组', value: 'phr2', class: 'c-input-300', type: 'input', inputType: 'text' },
             { label: '词组翻译', value: 'phrTrans2', class: 'c-input-300', type: 'input', inputType: 'text' },
+            { label: '关联', value: 'relation', class: 'c-input-300', type: 'input', inputType: 'textarea' },
         ],
         shortMemoryList: [
             {label: '1天', value: 'one'},
@@ -237,7 +239,7 @@ export default {
                             this.repeatDialogVisible = true;
                             return;
                         } else {
-                            this.wordList.push(this.form);
+                            this.wordList.push(Object.assign({}, this.form));
                         }
                     }
                     this.$copyText(JSON.stringify(this.wordList));
@@ -257,7 +259,10 @@ export default {
         },
         resetForm(formName) {
             this.$refs[formName].resetFields();
-            this.form = Object.assign({}, this.cacheForm);
+            this.form = Object.assign({}, this.cacheForm, {
+                day: this.wordList[0].day || 1,
+                date: this.wordList[0].date || ''
+            });
             this.repeatIndex = 1000;
         }
     }

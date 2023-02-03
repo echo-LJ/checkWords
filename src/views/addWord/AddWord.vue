@@ -4,8 +4,8 @@
         <span class="c-font-500 c-font-16 c-font-green"> 已添加:</span>
         <span class="c-font-500 c-font-16 has-word" 
               :class="{ active: item.word === form.word, }"
-              v-for="item in wordList" :key="item.word" @click="readWordDetail(item)">
-            {{item.word}}
+              v-for="(item, index) in wordList" :key="item.word" @click="readWordDetail(item)">
+           <span class="has-word-index">{{index + 1}}</span> {{item.word}}
         </span>
     </div>
     <el-form ref="form" :model="form" label-width="140px" :rules="rules">
@@ -284,11 +284,15 @@ export default {
     padding: 20px 0px 20px 40px;
     width: $aside-width;
     z-index: 1;
-    // box-shadow: 0 2px 3px -1px rgba($black, 0.3);
+    box-shadow: 0 2px 3px -1px rgba($black, 0.3);
     .has-word{
         display: block;
         &:hover, &.active{
             color: $primary;
+        }
+        .has-word-index{
+            width: 20px;
+            display: inline-block;
         }
     }
 

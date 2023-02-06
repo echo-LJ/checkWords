@@ -223,8 +223,12 @@ export default {
     },
     methods: {
         setMemroy(){
+            let day = 'three';
             this.wordList.forEach((item)=>{
-                item.shortMemory.push('three');
+                if(!item.shortMemory.includes(day)){
+                    item.shortMemory.push(day);
+                }
+                
             });
             this.$copyText(JSON.stringify(this.wordList));
         },

@@ -77,6 +77,9 @@
         prop="three"
         label="3天"
         width="120">
+         <template slot-scope="scope">
+           <p class="c-font-center">{{ scope.row.shortMemory.includes('three')?  '✔️': '⭕️' }}</p>
+        </template>
       </el-table-column>
     </el-table-column>
     <el-table-column label="中期记忆复习周期">

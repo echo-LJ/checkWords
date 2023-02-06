@@ -41,6 +41,7 @@
         <el-form-item>
             <el-button type="primary"  v-if="wordList.length < 11" @click="onSubmit('form')">生成数据</el-button>
             <el-button @click="resetForm('form')">重置</el-button>
+            <el-button type="primary" @click="setMemroy">设置记忆</el-button>
         </el-form-item>
         <!-- <el-form-item v-if="!isEdit && wordList.length > 0">
            <el-button type="primary"  @click="copyWord('form')">复制数据</el-button>
@@ -211,7 +212,8 @@ export default {
             this.form = Object.assign({}, this.form, this.$route.params);
         }
         let wordDay = `word${this.form.day}`;
-            this.wordList = window.wordAllObj[wordDay] || [];
+        this.wordList = window.wordAllObj[wordDay] || [];
+        this.setMemroy('shortMemory', 'three');
     },
     watch: {
         'form.day'(bool) {
@@ -220,6 +222,12 @@ export default {
         }
     },
     methods: {
+        setMemroy(){
+            this.wordList.forEach((item)=>{
+                item.shortMemory.push('three');
+            });
+            this.$copyText(JSON.stringify(this.wordList));
+        },
         readWordDetail(item){
             this.form = Object.assign({}, this.form, item);
         },
